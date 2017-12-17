@@ -1,0 +1,114 @@
+﻿@model Zadatak2.Models.TodoViewModels.TodoViewModel
+
+
+<div class="card">
+
+        <h4>
+            <b>@Model.Text</b>
+            @if (!Model.DateCompleted.HasValue)
+            {
+                <span style="color: #ff0000">
+                    @Model.DeadlineText
+                </span>
+            }
+                
+        </h4>
+        @{ 
+            string date = "";
+            if (Model.DateCompleted.HasValue)
+            {
+                string month = "";
+                switch (Model.DateCompleted.Value.Month)
+                {
+                    case 1:
+                        month = "siječnja";
+                        break;
+                    case 2:
+                        month = "veljače";
+                        break;
+                    case 3:
+                        month = "ožujka";
+                        break;
+                    case 4:
+                        month = "travnja";
+                        break;
+                    case 5:
+                        month = "svibnja";
+                        break;
+                    case 6:
+                        month = "lipnja";
+                        break;
+                    case 7:
+                        month = "srpnja";
+                        break;
+                    case 8:
+                        month = "kolovoza";
+                        break;
+                    case 9:
+                        month = "rujna";
+                        break;
+                    case 10:
+                        month = "listopada";
+                        break;
+                    case 11:
+                        month = "studenog";
+                        break;
+                    case 12:
+                        month = "prosinca";
+                        break;
+                };
+                date = Model.DateCompleted.Value.Day.ToString() + ". " + month + " " + Model.DateDue.Value.Year.ToString() + ".";
+
+            }
+            else if (Model.DateDue.HasValue)
+            {
+                string month = "";
+                switch (Model.DateDue.Value.Month)
+                {
+                    case 1:
+                        month = "siječnja";
+                        break;
+                    case 2:
+                        month = "veljače";
+                        break;
+                    case 3:
+                        month = "ožujka";
+                        break;
+                    case 4:
+                        month = "travnja";
+                        break;
+                    case 5:
+                        month = "svibnja";
+                        break;
+                    case 6:
+                        month = "lipnja";
+                        break;
+                    case 7:
+                        month = "srpnja";
+                        break;
+                    case 8:
+                        month = "kolovoza";
+                        break;
+                    case 9:
+                        month = "rujna";
+                        break;
+                    case 10:
+                        month = "listopada";
+                        break;
+                    case 11:
+                        month = "studenog";
+                        break;
+                    case 12:
+                        month = "prosinca";
+                        break;
+                };
+                date = Model.DateDue.Value.Day.ToString() + ". " + month + " " + Model.DateDue.Value.Year.ToString() + ".";
+            }
+
+        }
+        <p>@(Model.DateDue.HasValue? date : "No date entered") </p>
+        @{ string text = !Model.DateCompleted.HasValue ? "Mark as Completed" : "Remove from Completed";}
+        <a class="btn btn-sm btn-primary" asp-action="@(Model.DateCompleted.HasValue ? "RemoveFromCompleted" : "MarkAsCompleted")" asp-controller="Todo" asp-route-id="@Model.Id">
+           @text
+        </a>
+</div>
