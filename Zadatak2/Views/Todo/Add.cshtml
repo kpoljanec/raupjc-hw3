@@ -1,0 +1,27 @@
+﻿@using Zadatak2.Models.TodoViewModels
+@model Zadatak2.Models.TodoViewModels.AddTodoViewModel
+@{
+    ViewData["Title"] = "Add";
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Add Todo</title>
+</head>
+<body>
+    <div>
+        <h2><b>Add todo</b></h2>
+
+
+        <form asp-action="Add" method="post">
+            Text: <input asp-for="Text" /> <span asp-validation-for="Text" class="text-danger"></span> <br />
+            DateDue: <input asp-for="DateDue" /> <span asp-validation-for="DateDue" class="text-danger"></span> <br />
+            Labels: <input asp-for="Labels" /> <span asp-validation-for="Labels" class="text-danger"></span> <br />
+            <input type="submit" />
+        </form>
+        <br />
+        <a asp-controller="Todo" asp-action="Index">Back</a>
+    </div>
+</body>
+</html>

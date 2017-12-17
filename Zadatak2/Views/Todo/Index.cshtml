@@ -1,0 +1,28 @@
+﻿@using Zadatak2.Models.TodoViewModels
+@model Zadatak2.Models.TodoViewModels.IndexViewModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Index</title>
+</head>
+<body>
+    <div>
+        <h3><b>Todo</b></h3>
+        <h5>
+            <a asp-controller="Todo" asp-action="Add">Add new todo</a>
+            <a style="margin-left: 15px" asp-controller="Todo" asp-action="GetCompleted">See completed todos</a>
+        </h5>
+
+        @foreach(TodoViewModel model in Model.TodoViewModels)
+        {
+            Html.RenderPartial("TodoPartial", model);
+        }
+
+    </div>
+</body>
+</html>
