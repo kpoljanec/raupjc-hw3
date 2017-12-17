@@ -15,6 +15,7 @@ namespace Zadatak2.Models.TodoViewModels
         [DisplayFormat(DataFormatString = "dd/MM/yyyy", ConvertEmptyStringToNull = true)]
         public DateTime? DateDue { get; set; }
 
+        [Required]
         public string Labels { get; set; }
 
     }
